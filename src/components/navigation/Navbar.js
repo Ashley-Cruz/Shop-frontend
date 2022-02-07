@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from '../../assets/logo/daniels-logo.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { CategoryOption } from './CategoryOption';
@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom';
 export const Navbar = () => {
 
   const dispatch = useDispatch();
+  const [search, setSearch] = useState('');
 
   const history = useHistory();
 
@@ -27,9 +28,13 @@ export const Navbar = () => {
       onSubmit();
     }
   }
+  const handleInputChange = ({target}) => {
+    setSearch(target.value);
+  }
 
   const onSubmit = () => {
-    console.log('Enter');
+    setSearch('')
+    history.push(`/results/${search}`)
   }
 
   return (
@@ -42,7 +47,7 @@ export const Navbar = () => {
           <CategoryOption key={i} category={category} />
         ))
       }
-      <input type='text' placeholder="Busca un producto" onKeyDown={onKeyDown} />
+      <input type='text' name='search' value={search} onChange={handleInputChange} placeholder="Busca un producto" onKeyDown={onKeyDown} />
       <div className="navigation__navbar-icons">
         <i className="fas fa-heart"></i>
         <i className="fas fa-shopping-cart"></i>

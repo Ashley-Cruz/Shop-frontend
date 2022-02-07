@@ -6,7 +6,7 @@ import { useCounter } from './../../hooks/useCounter';
 export const ProductScreen = () => {
 
     const location = useLocation();
-    const productId = parseInt(location.pathname.slice(9))
+    const productId = parseInt(location.pathname.split('/')[2])
     const actualProduct = useSelector(state => state.product.products.filter(item => item.id === productId))[0];
 
     const {counter, decrement, increment} = useCounter();
@@ -25,7 +25,7 @@ export const ProductScreen = () => {
                 <h4>{actualProduct?.title}</h4>
                 <p className='product__productcreen-p-price'>${actualProduct?.price} USD</p>
                 <p className='product__productcreen-p'>DESCRIPTION</p>
-                <p className='product__productcreen-p-desc'>{actualProduct?.description.slice(0,1).toUpperCase()}{actualProduct?.description.slice(1)}</p>
+                <p className='product__productcreen-p-desc'>{actualProduct?.description.slice(0,1).toUpperCase()}{actualProduct?.description.slice(1)}.</p>
                 <div className='product__productcreen-div-counter'>
                     <p className='product__productcreen-p'>QUANTITY</p>
                     <div>

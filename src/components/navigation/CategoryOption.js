@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const CategoryOption = ({category}) => {
+
     return (
-        <p className='navigation__categoryoption-p'>{category}</p>
+        <Link to={`/${category}`} className='navigation__categoryoption-p'>{category}</Link>
     );
 };

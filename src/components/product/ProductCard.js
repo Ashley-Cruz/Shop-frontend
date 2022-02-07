@@ -1,16 +1,12 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { productActiveProduct } from './../../actions/product';
 
 export const ProductCard = ({product}) => {
 
   const history = useHistory();
-  const dispatch = useDispatch();
 
   const onClick = () => {
-    history.push(`/product/${product.id}`)
-    dispatch(productActiveProduct(product));
+    history.push(`/${product.category}/${product.id}`)
   }
 
   return (
