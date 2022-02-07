@@ -14,9 +14,8 @@ export const ProductsScreen = () => {
   const {products} = useSelector(state => state.product)
 
   useEffect(() => {
-    // if(categories !== []){} 
-    dispatch(categoryStartLoadingCategories());
-    dispatch(productStartLoadingProducts());
+    // if(categories !== []){}
+    
   }, []);
   
     return (

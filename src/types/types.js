@@ -6,5 +6,7 @@ export const types = {
     productLoadedProductsByCategory: '[Product] Loaded Products By Category',
     productCleanProductsByCategory: '[Product] Clean Products By Category',
     productLoadedProducts: '[Product] Loaded Products',
-    productCleanProducts: '[Product] Clean Products'
+    productCleanProducts: '[Product] Clean Products',
+    productActiveProduct: '[Product] Active Product',
+    productCleanActiveProduct: '[Product] Clean Active Product',
 } 

@@ -39,6 +39,11 @@ export const productStartLoadingProductsByCategory = () => {
     }
 }
 
+export const productActiveProduct = (product) => ({
+    type: types.productActiveProduct,
+    payload: product
+})
+
 const productsByCategoryLoaded = (products) => ({
     type: types.productLoadedProductsByCategory,
     payload: products

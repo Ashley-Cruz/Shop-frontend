@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Logo from '../../assets/logo/daniels-logo.png';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CategoryOption } from './CategoryOption';
+import { categoryStartLoadingCategories } from './../../actions/category';
+import { productStartLoadingProducts } from './../../actions/product';
+import { useHistory } from 'react-router-dom';
 
 export const Navbar = () => {
+
+  const dispatch = useDispatch();
+
+  const history = useHistory();
+
+  useEffect(() => {
+    dispatch(categoryStartLoadingCategories());
+    dispatch(productStartLoadingProducts());
+  }, []);
+  
 
   const {categories} = useSelector(state => state.category);
 
@@ -22,7 +35,7 @@ export const Navbar = () => {
   return (
     <div className="navigation__navbar-container">
       <div>
-        <img src={Logo} alt='daniels logo' />
+        <img src={Logo} alt='daniels logo' onClick={() => history.push('')} />
       </div>
       {
         categories.map((category, i) => (
