@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { ProductCard } from './ProductCard';
@@ -17,7 +17,6 @@ export const SearchResultsScreen = () => {
                 <div className='product__searchresultscreen-keyword-container'>
                     <p>{keyword}</p>
                 </div>
-
                 {
                     products.length > 0
                     ? products.map( (product) => (

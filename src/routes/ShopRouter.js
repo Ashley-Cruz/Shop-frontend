@@ -20,7 +20,7 @@ export const ShopRouter = () => {
                 <Route exact path="/:categoryName" component={CategoryScreen} />
                 <Route exact path="" component={ProductsScreen} />
 
-                <Redirect to="" />
+                <Redirect exact to="" />
             </Switch>
         </div>
     );

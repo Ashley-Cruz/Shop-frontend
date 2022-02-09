@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CategoryOption } from './CategoryOption';
 import { categoryStartLoadingCategories } from './../../actions/category';
 import { productStartLoadingProducts } from './../../actions/product';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 export const Navbar = () => {
 
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
+  const user = useSelector(state => state.auth);
 
   const history = useHistory();
 
@@ -47,11 +48,22 @@ export const Navbar = () => {
           <CategoryOption key={i} category={category} />
         ))
       }
-      <input type='text' name='search' value={search} onChange={handleInputChange} placeholder="Busca un producto" onKeyDown={onKeyDown} />
+      <input type='text' name='search' value={search} onChange={handleInputChange} placeholder="Search products..." onKeyDown={onKeyDown} />
       <div className="navigation__navbar-icons">
         <i className="fas fa-heart"></i>
         <i className="fas fa-shopping-cart"></i>
-        <i className="fas fa-user"></i>
+        <div>
+          <i className="fas fa-user"></i>
+          <div className='navigation__navbar-options'>
+              <p>Options</p>
+              <span></span>
+              {
+                  user?.uid
+                  ? <p className='navigation__navbar-link'>Sign out</p>
+                  : <Link to='/auth/login' className='navigation__navbar-link'>Log in</Link>
+              }
+          </div>
+        </div>
       </div>
     </div>
   );
